@@ -61,3 +61,10 @@ fi
 
 # start yabai
 brew services start yabai
+
+if ! command -v delta &> /dev/null
+then
+    brew install git-delta
+else
+    echo "Skip Delta install"
+fi
