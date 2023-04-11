@@ -43,6 +43,13 @@ else
     echo "Skip OH MY ZSH install"
 fi
 
+if ! command -v starship &> /dev/null
+then
+    curl -sS https://starship.rs/install.sh | sh
+else
+    echo "Skip Starship install"
+fi
+
 # __     __     _             _ 
 # \ \   / /    | |           (_)
 #  \ \_/ /__ _ | |__    __ _  _ 
@@ -63,9 +70,24 @@ fi
 brew services start yabai
 brew services start skhd
 
+#    _____   _   _   
+#   / ____| (_) | |  
+#  | |  __   _  | |_ 
+#  | | |_ | | | | __|
+#  | |__| | | | | |_ 
+#   \_____| |_|  \__|
+#                   
+
 if ! command -v delta &> /dev/null
 then
     brew install git-delta
 else
     echo "Skip Delta install"
+fi
+
+if ! command -v bat &> /dev/null
+then
+    brew install bat
+else
+    echo "Skip Bat install"
 fi
