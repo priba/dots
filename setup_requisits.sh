@@ -1,4 +1,7 @@
 #!/bin/bash
+
+filerc=${1:-'~/.bashrc'} 
+
 vercomp () {
     if [[ $1 == $2 ]]
     then
@@ -64,7 +67,7 @@ then
     rm zxf lua-5.4.4.tar.gz
     cd lua-5.4.4
     make all test
-    echo "alias lua="~/lua-5.4.4/src/lua"" >> ~/.bashrc
+    echo "alias lua="~/lua-5.4.4/src/lua"" >> $filerc
 else
     echo "Skipping lua installation"
 fi
@@ -75,9 +78,9 @@ cd
 wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz
 tar zxf go1.20.2.linux-amd64.tar.gz
 rm go1.20.2.linux-amd64.tar.gz
-echo "alias go="~/go/bin/go"">> ~/.bashrc
+echo "alias go="~/go/bin/go"">> $filerc
 ~/go/bin/go install github.com/mattn/efm-langserver@latest
-echo "alias efm-langserver="~/go/bin/efm-langserver"">> ~/.bashrc
+echo "alias efm-langserver="~/go/bin/efm-langserver"">> $filerc
 
 
 if command -v nvim &> /dev/null
@@ -95,16 +98,16 @@ then
         wget https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.tar.gz
         tar xf nvim-linux64.tar.gz
         rm nvim-linux64.tar.gz
-        echo "alias nvim="~/nvim-linux64/bin/nvim"" >> ~/.bashrc
-    	echo "alias vim="~/nvim-linux64/bin/nvim"" >> ~/.bashrc
+        echo "alias nvim="~/nvim-linux64/bin/nvim"" >> $filerc
+    	echo "alias vim="~/nvim-linux64/bin/nvim"" >> $filerc
     else
         echo "Correct nvim version is already installed"
     fi
 else
     wget https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.tar.gz
     tar xf nvim-linux64.tar.gz
-    echo "alias nvim="~/nvim-linux64/bin/nvim"" >> ~/.bashrc
-    echo "alias vim="~/nvim-linux64/bin/nvim"" >> ~/.bashrc
+    echo "alias nvim="~/nvim-linux64/bin/nvim"" >> $filerc
+    echo "alias vim="~/nvim-linux64/bin/nvim"" >> $filerc
 fi
 
 cd $cwd
