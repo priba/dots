@@ -61,6 +61,7 @@ fi
 
 # start yabai
 brew services start yabai
+brew services start skhd
 
 if ! command -v delta &> /dev/null
 then

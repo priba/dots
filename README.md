@@ -43,4 +43,11 @@ dots push
 
 Keep in mind that the first time we open the tmux, we will need to install all the plugins. Hit `prefix + I` to fetch the plugin and source it. The plugin will automatically start "working" in the background, no action required.
 
+## Yabai and Skhd
 
+You might need to restart the service:
+
+```sh
+brew services restart yabai
+brew services restart skhd
+```
