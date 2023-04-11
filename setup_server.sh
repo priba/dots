@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
-filerc=${1:-'~/.bashrc'} 
+
+filerc=${1:-'~/.zshrc'} 
 
 vercomp () {
     if [[ $1 == $2 ]]
@@ -37,7 +38,7 @@ cwd=$(pwd)
 cd 
 if ! command -v node &> /dev/null
 then
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.3/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.39.3/install.sh | bash
     export NVM_DIR=$HOME/.nvm;
     . $NVM_DIR/nvm.sh;
     nvm install node;
@@ -86,7 +87,7 @@ echo "alias efm-langserver="~/go/bin/efm-langserver"">> $filerc
 if command -v nvim &> /dev/null
 then
     nvim_ver=$(nvim --version | grep "v[0-9]" | cut -f2 -d"v")
-    vercomp "$nvim_ver" 0.8.0
+    vercomp "$nvim_ver" 0.9.0
     case $? in
         0) op='=';;
         1) op='>';;
@@ -95,32 +96,14 @@ then
     echo "$op"
     if [[ "$op" == '<' ]]
     then
-        wget https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.tar.gz
-        tar xf nvim-linux64.tar.gz
-        rm nvim-linux64.tar.gz
-        echo "alias nvim="~/nvim-linux64/bin/nvim"" >> $filerc
-    	echo "alias vim="~/nvim-linux64/bin/nvim"" >> $filerc
+        brew install neovim
+        echo "alias vim="$(command -v nvim)"" >> $filerc
     else
         echo "Correct nvim version is already installed"
     fi
 else
-    wget https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.tar.gz
-    tar xf nvim-linux64.tar.gz
-    echo "alias nvim="~/nvim-linux64/bin/nvim"" >> $filerc
-    echo "alias vim="~/nvim-linux64/bin/nvim"" >> $filerc
+    brew install neovim
+    echo "alias vim="$(command -v nvim)"" >> $filerc
 fi
-
-cd $cwd
-cp -r .config/nvim ~/.config/
-
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-# getting tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-cp .tmux.conf $HOME/
-
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-	 ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 pip install nvitop
