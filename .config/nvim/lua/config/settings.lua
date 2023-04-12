@@ -24,18 +24,18 @@ M.load_options = function()
     cmdheight = 1,             -- space in the neovim command line for displaying messages
     colorcolumn = "99999",     -- fixes indentline for now
     completeopt = {
-     	"menu",
-     	"menuone",
-      "noselect",
-    -- 	"noinsert",
+        "menu",
+        "menuone",
+        "noselect",
+        -- "noinsert",
     },
     conceallevel = 0,                        -- so that `` is visible in markdown files
     fileencoding = "utf-8",                  -- the encoding written to a file
     foldlevel = 99,
-    fillchars=fold:\ ,
+    fillchars="fold: ",
     foldmethod = "expr",                     -- folding set to "expr" for treesitter based folding
     foldexpr = "nvim_treesitter#foldexpr()", -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
-    foldtext=substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)),
+    foldtext="substitute(getline(v:foldstart),'\\t',repeat('\\ ',&tabstop),'g').'...'.trim(getline(v:foldend))",
     guioptions = "atI",
     guifont = "monospace:h17/",               -- the font used in graphical neovim applications
     hidden = true,                           -- required to keep multiple buffers and open multiple buffers
@@ -56,14 +56,14 @@ M.load_options = function()
     updatetime = 250,                        -- faster completion
     writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
     -- Use wide tabs
-    shiftwidth = 0
-    softtabstop = -1
-    expandtab = true
+    shiftwidth = 0,
+    softtabstop = -1,
+    expandtab = true,
     tabstop = 4,                             -- insert 2 spaces for a tab
     -- Decent wildmenu
-    wildmenu = true
-    wildmode = "list:longest"
-    wildignore = ".hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor,*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite"
+    wildmenu = true,
+    wildmode = "list:longest",
+    wildignore = ".hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor,*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite",
     cursorline = true,                       -- highlight the current line
     number = true,                           -- set numbered lines
     relativenumber = true,                   -- set relative numbered lines
