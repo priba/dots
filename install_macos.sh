@@ -37,17 +37,42 @@ else
     echo chsh -s /usr/local/bin/zsh
 fi
 
-if ! [ -d ~/.oh-my-zsh ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-else
-    echo "Skip OH MY ZSH install"
-fi
-
 if ! command -v starship &> /dev/null
 then
     curl -sS https://starship.rs/install.sh | sh
 else
     echo "Skip Starship install"
+fi
+
+if ! command -v macchina &> /dev/null
+then
+    brew install macchina
+else
+    echo "Skip Macchina install"
+fi
+
+if ! command -v exa &> /dev/null
+then
+    brew install exa
+else
+    echo "Skip Exa install"
+fi
+
+if ! command -v ranger &> /dev/null
+then
+    brew install ranger
+else
+    echo "Skip ranger install"
+fi
+
+if ! command -v fzf &> /dev/null
+then
+    brew install fzf
+
+    # To install useful key bindings and fuzzy completion:
+    $(brew --prefix)/opt/fzf/install
+else
+    echo "Ski[ fzf install"
 fi
 
 # __     __     _             _ 
