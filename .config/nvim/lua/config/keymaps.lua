@@ -43,9 +43,9 @@ vim.keymap.set("v", "<A-w>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "<leader>se", "<ESC>^vg_")
 vim.keymap.set("n", "<leader>se", "^vg_")
 
-vim.keymap.set("n", "<leader>)", "ciw(<c-r>\")<ESC>") -- Surround with parenthesis
+vim.keymap.set("n", "<leader>)", "ciw(<c-r>\")<ESC>", {noremap=true}) -- Surround with parenthesis
 vim.keymap.set("n", "<leader>]", "ciw[<c-r>\"]<ESC>") -- Surround with parenthesis
-vim.keymap.set("n", "<leader>}", "ciw{<c-r>\"}<ESC>") -- Surround with parenthesis
+vim.keymap.set("n", "<leader>}", "ciw{<c-r>\"}<ESC>", {noremap=true}) -- Surround with parenthesis
 
 -- Delete word forward, counter of C-W in insert  
 vim.keymap.set("i", "<C-q>", "<C-o>dw")
