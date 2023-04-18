@@ -106,4 +106,6 @@ else
     echo "alias vim="$(command -v nvim)"" >> $filerc
 fi
 
+npm install -g prettier
+
 pip install nvitop
