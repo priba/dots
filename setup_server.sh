@@ -96,16 +96,29 @@ then
     echo "$op"
     if [[ "$op" == '<' ]]
     then
-        brew install neovim
+        if command -v brew &> /dev/null
+        then
+            brew install neovim
+        else
+            wget https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.tar.gz
+            tar xf nvim-linux64.tar.gz
+            rm nvim-linux64.tar.gz
+        fi
         echo "alias vim="$(command -v nvim)"" >> $filerc
     else
         echo "Correct nvim version is already installed"
     fi
 else
-    brew install neovim
+    if command -v brew &> /dev/null
+    then
+        brew install neovim
+    else
+        wget https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.tar.gz
+        tar xf nvim-linux64.tar.gz
+        rm nvim-linux64.tar.gz
+    fi
     echo "alias vim="$(command -v nvim)"" >> $filerc
 fi
 
 npm install -g prettier
 
-pip install nvitop
