@@ -65,3 +65,5 @@ then
 else
     echo "Skip Bat install"
 fi
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
